@@ -8,7 +8,7 @@ phases:
       - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASS
       - docker --version
       - git --version
-      - git clone $GIT_URL && cd "$(basename "$_" .git)" && pwd && ls
+      - git clone $GIT_URL && cd celestrack-flask && pwd && ls
   build:
     commands:
       - echo "[CODEBUILD] build started at $(date)"
