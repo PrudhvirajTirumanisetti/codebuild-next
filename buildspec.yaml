@@ -5,10 +5,10 @@ phases:
     commands:
       - echo "[CODEBUILD] pre_build started at $(date)"
       - echo Logging in to docker hub...
-      - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASS
+      - docker login --username $REGISTRY_USER --password $REGISTRY_TOKEN
       - docker --version
       - git --version
-      - git clone $GIT_URL && cd celestrack-flask && pwd && ls
+      - git clone $GIT_URL && cd $(echo $GIT_SERVER_URL |  cut -d "/" -f 5 | cut -d "." -f 1) && pwd && ls
   build:
     commands:
       - echo "[CODEBUILD] build started at $(date)"
